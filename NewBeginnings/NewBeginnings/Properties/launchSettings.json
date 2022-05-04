@@ -20,7 +20,7 @@
     "NewBeginnings": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "participant",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
