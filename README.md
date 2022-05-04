@@ -11,7 +11,9 @@ Open the project via the sln file in Visual Studio, Build Project and Run.
 
 ## API
 
- Endpoint : https://localhost:44395/participant
+Use POSTMAN to test API calls with settings provided.
+
+Endpoint : https://localhost:44395/participant
  
  Sample Body
 ```

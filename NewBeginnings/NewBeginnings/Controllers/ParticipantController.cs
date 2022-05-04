@@ -20,11 +20,11 @@ namespace NewBeginnings.Controllers
         }
 
         // GET api/<ParticipantController>/5
-        [HttpGet("{id}")]
-        public IActionResult Get(string id)
+        [HttpGet("{refNum}")]
+        public IActionResult Get(string refNum)
         {
             Participant participant;
-            if (_memoryCache.TryGetValue(id, out participant))
+            if (_memoryCache.TryGetValue(refNum, out participant))
             {
                 return new JsonResult(participant);
             }
@@ -50,15 +50,15 @@ namespace NewBeginnings.Controllers
         }
 
         // PUT api/<ParticipantController>/5
-        [HttpPut("{id}")]
-        public IActionResult Put(string id, [FromBody] Participant participant)
+        [HttpPut("{refNum}")]
+        public IActionResult Put(string refNum, [FromBody] Participant participant)
         {
             if (participant != null)
             {
                 Participant existingParticipant;
-                if (_memoryCache.TryGetValue(id, out existingParticipant))
+                if (_memoryCache.TryGetValue(refNum, out existingParticipant))
                 {
-                    _memoryCache.Remove(id);
+                    _memoryCache.Remove(refNum);
                 }
 
                 var cacheOptions = new MemoryCacheEntryOptions().SetSlidingExpiration(TimeSpan.FromMinutes(30));
@@ -73,10 +73,10 @@ namespace NewBeginnings.Controllers
         }
 
         // DELETE api/<ParticipantController>/5
-        [HttpDelete("{id}")]
-        public IActionResult Delete(string id)
+        [HttpDelete("{refNum}")]
+        public IActionResult Delete(string refNum)
         {
-            _memoryCache.Remove(id);
+            _memoryCache.Remove(refNum);
             return new OkResult();
         }
     }
